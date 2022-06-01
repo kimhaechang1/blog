@@ -88,7 +88,7 @@ return 문에서 ```<div className="list">```인 구문을 복사 붙여넣기 3
 
 마지막으로 각각의 제목이 들어가야할 태그인 ```<h4></h4>``` 속에 각각 알맞은 데이터 바인딩 해주기
 
-```javascript
+```jsx
 ...
 
 const [title1, settitle1] = useState("남자코트 추천")
