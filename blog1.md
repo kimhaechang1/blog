@@ -80,7 +80,7 @@ let [a,c] = [1,2]
  
  (데이터 바인딩 필수!)
 
-#### 해결방법:
+#### 나의 해결방법
 
 function 속에 useState 3개를 각각 "남자코트 추천", "강남 우동맛집", "파이썬 독학" 으로 작성
 
@@ -120,6 +120,50 @@ return(
 ...
 
 ```
+
+#### 더 효율적인 정답
+
+단순히 여러 문자열만을 저장해놓고 쓰면 되므로
+
+쓸데없이 state를 3개나 정의 할 필요가 없다.
+
+'글제목'이라는 state하나에 default State로 배열을 주고
+
+필요한 곳에 인덱스로 꺼내어 사용하면 된다!
+
+```jsx
+function App(){
+    let post = '강남 우동 맛집'
+    let [글제목, b] = useState(['남자코트 추천','강남 우동맛집', '파이썬독학'])
+
+    return(
+        <div className="App">
+            <div className="black-nav">
+                <h4>ReactBlog</h4>
+            </div>
+            <div className="list">
+                <h4>{ 글제목[0] }</h4>
+                <p>2월 17일 발행</p>
+            </div>
+            <div className="list">
+                <h4>{ 글제목[1] }</h4>
+                <p>2월 17일 발행</p>
+            </div>
+            <div className="list">
+                <h4>{ 글제목[2] }</h4>
+                <p>2월 17일 발행</p>
+            </div>
+        </div>
+    )
+}
+```
+
+#### 핵심
+
+useState를 사용할 때 **공통점**이 있는 부분을 캐치하는 것이
+
+효율적 일 것 같다.
+
 
 
 
