@@ -3,7 +3,6 @@ import './App.css';
 import {useState} from 'react'
 
 function App(){
-  let post = '강남 우동 맛집'
   let [글제목, set글제목] = useState(['남자코트 추천','강남 우동맛집', '파이썬독학'])
   const [따봉, set따봉] = useState(0)
   
@@ -16,11 +15,6 @@ const onClickHandler = ()=>{
           <div className="black-nav">
               <h4>ReactBlog</h4>
           </div>
-          <button onClick={()=>{
-            let copy = [...글제목]
-            copy.sort()
-            set글제목(copy)
-          }}>정렬하기</button>
           <div className="list">
               <h4>{ 글제목[0] } <span onClick={onClickHandler}>👍</span> {따봉} </h4>
               <p>2월 17일 발행 <span onClick={()=>{
@@ -36,8 +30,18 @@ const onClickHandler = ()=>{
               <h4>{ 글제목[2] }</h4>
               <p>2월 17일 발행</p>
           </div>
+          <Modal/>          
       </div>
   )
 }
 
+function Modal(){
+  return(
+    <div className="modal">
+      <h4>제목</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
+    </div>
+  )
+}
 export default App;
