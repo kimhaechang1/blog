@@ -6,9 +6,10 @@ function App(){
   let [글제목, set글제목] = useState(['남자코트 추천','강남 우동맛집', '파이썬독학'])
   const [따봉, set따봉] = useState([0,0,0])
   const [modal, setModal] = useState(false)
-const onClickHandler = ()=>{
-  set따봉(따봉+1)
-}
+  const [modalTitle,setModalTitle] = useState(null)
+  const onClickHandler = ()=>{
+    set따봉(따봉+1)
+  }
   
   return(
       <div className="App">
@@ -37,7 +38,9 @@ const onClickHandler = ()=>{
             return(
               <div className="list" key={title.id}>
                 <h4 onClick={()=>{
-                  modal? setModal(false) : setModal(true)
+                  index === modalTitle ? setModal(false) : setModal(true)
+                  setModalTitle(index)
+                  
                 }}>{title} <span onClick={()=>{
                   let copy = [...따봉]
                   copy[index] +=1
@@ -47,18 +50,20 @@ const onClickHandler = ()=>{
             </div>
             )
           })}
-          {modal ? <Modal/> : null}
+          {modal ? <Modal presentTitle={modalTitle} titles={글제목} /> : null}
           
       </div>
   )
 }
 
-function Modal(){
+function Modal(props){
+  const titleArray = props.titles
   return(
     <div className="modal">
-      <h4>제목</h4>
+      <h4>{titleArray[props.presentTitle]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
+      <button>글수정</button>
     </div>
   )
 }
